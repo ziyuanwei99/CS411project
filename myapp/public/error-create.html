@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Create Form</title>
+		<link rel="stylesheet" type="text/css" href="stylesheets/create.css" />
+	</head>
+
+	<body>
+	<form class="login-form" name="login" action="#">
+    <h1>Sign up now!</h1>
+    First name<input type="text" placeholder="First name" name="First name"/>
+
+    Last name<input type="text" placeholder="Last name" name="Last name"/>
+
+		Username<input type="text" placeholder="Email address" name="username"/>
+
+		Password<input type="password" placeholder="password" name="password"/>
+
+    Repeat Password<input type="password" placeholder="Repeat Password" name="psw-repeat">
+
+		<input type="button" id = "cancel" onclick="redirectToLogin" value="Cancel"/>
+		<input type="button" id = "sign" onclick="redirectToMain" value="Sign up"/>
+		<p style="color:red">Sorry, your username is used. Please try again.</p>
+	</form>
+	<script>
+		function redirectToMain() {
+			window.location.href="/main.html#"
+		}
+
+		function redirectToLogin() {
+			window.location.href="/login.html#"
+		}
+	</script>
+	</body>
+</html>

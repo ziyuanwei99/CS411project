@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Login Form</title>
+		<link rel="stylesheet" type="text/css" href="stylesheets/login.css" />
+	</head>
+
+	<body>
+	<form class="login-form" name="login" onsubmit="submitfunc(event)" method="post">
+		<h1>Please login!</h1>
+		Username<input type="text" id="name"/>
+		Password<input type="password" id="pwd"/>
+		<button type="submit" id ="login">Submit</button>
+	</form>
+	<input type="button" id="create" onclick="redirectToCreate" value="Create an account"/>
+	<script>
+		function redirectToCreate() {
+			window.location.href="/create.html#"
+		}
+		function submitfunc(e) {
+			e.preventDefault()
+			fetch("/login", {
+				method:"post",
+				headers: {
+					'Content-Type':'application/json'
+				},
+				body: JSON.stringify({
+					username: document.getElementById("name").value,
+					password: document.getElementById("pwd").value,
+				})
+			})
+			.then(res=>res.json())
+			.then(data=>{
+				if(data.status === "good") {
+					fetch('/main.html')
+					.then(res=>res.text())
+				} else {
+					window.location.href="localhost:3000/error-login.html"
+				}
+			})
+			.catch(err=>{
+				console.log(err)
+			})
+		}
+	</script>
+	</body>
+</html>
