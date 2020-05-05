@@ -14,6 +14,7 @@
 		<button type="submit" id ="login">Submit</button>
 	</form>
 	<form style="width: 0px; height: 0px" action="/main.html" id="mainform"></form>
+	<form style="width: 0px; height: 0px" action="/error-login.html" id="errform"></form>
 	<input type="button" id="create" onclick="redirectToCreate" value="Create an account"/>
 	<script>
 		function redirectToCreate() {
@@ -37,7 +38,7 @@
 					document.cookie="username="+data.username+";"
 					document.getElementById("mainform").submit()
 				} else {
-					window.location.href="localhost:3000/error-login.html"
+					document.getElementById("errform").submit()
 				}
 			})
 			.catch(err=>{
