@@ -13,6 +13,7 @@
 		Password<input type="password" id="pwd"/>
 		<button type="submit" id ="login">Submit</button>
 	</form>
+	<form style="width: 0px; height: 0px" action="/main.html" id="mainform"></form>
 	<input type="button" id="create" onclick="redirectToCreate" value="Create an account"/>
 	<script>
 		function redirectToCreate() {
@@ -33,8 +34,8 @@
 			.then(res=>res.json())
 			.then(data=>{
 				if(data.status === "good") {
-					fetch('/main.html')
-					.then(res=>res.text())
+					document.cookie="username="+data.username+";"
+					document.getElementById("mainform").submit()
 				} else {
 					window.location.href="localhost:3000/error-login.html"
 				}
